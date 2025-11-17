@@ -124,8 +124,13 @@ Model akan memilih kelas dengan probabilitas terbesar.
 
 ---
 
-# github
+Terima kasih telah mengunjungi repositori ini.
 
-# [skimatt](https://github.com/skimatt)
 
-# Terima kasih.
+🔗 **Profil Owner:**  
+[![GitHub - skimatt](https://img.shields.io/badge/GitHub-skimatt-black?logo=github&style=for-the-badge)](https://github.com/skimatt)
+
+## 🙏 Terima Kasih
+
+Terima kasih atas perhatian dan waktunya.  
+Semoga repository ini bermanfaat dan mudah dipahami.
