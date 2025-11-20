@@ -134,7 +134,3 @@ Terima kasih atas perhatian dan waktunya.
 Semoga dokumen dan notebook ini membantu memahami implementasi Naive Bayes secara konseptual maupun praktis.
 
 Jika diperlukan, saya siap melakukan revisi tambahan sesuai arahan.
-
----
-
-Kalau kamu mau, saya bisa buatkan versi README **dalam format markdown lengkap** atau **menambahkan badge lain** (Python version, project status, dsb).
