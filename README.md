@@ -1,136 +1,68 @@
-# 📘 **Panduan Menjalankan Notebook — Implementasi Naive Bayes Kategorial untuk Prediksi Cuaca Besok**
+<div align="center">
+  <img src="https://cdn.dribbble.com/users/2234409/screenshots/11336360/media/32e790453b99992ba82033463533a272.png?resize=800x600&vertical=center" alt="Weather Prediction 3D Banner" width="100%" style="border-radius: 15px; object-fit: cover; height: 280px;">
+
+  <br><br>
+
+  <h1>📘 Implementasi Naive Bayes Kategorial<br><span style="font-weight: 300; font-size: 20px;">Studi Kasus: Prediksi Cuaca Besok</span></h1>
+
+  <p>
+    <strong>Panduan Resmi Notebook: <code>NB_Cuaca_NPM.ipynb</code></strong><br>
+    <i>"From Scratch, No Scikit-Learn, Pure Math Logic."</i>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
+    <img src="https://img.shields.io/badge/Algorithm-Naive%20Bayes-green?style=for-the-badge" alt="Algorithm">
+    <img src="https://img.shields.io/badge/Calculation-Manual-red?style=for-the-badge" alt="Manual Calculation">
+  </p>
+
+  <br>
+</div>
+
+---
+
+## 🌟 Pendahuluan
 
 Dokumen ini merupakan panduan resmi untuk membuka, menjalankan, dan menguji notebook **NB_Cuaca_NPM.ipynb**.
-Seluruh proses perhitungan Naive Bayes dilakukan **secara manual** mengacu pada ketentuan tugas, tanpa menggunakan modul `sklearn.naive_bayes`.
 
-Notebook ini saya susun untuk mendemonstrasikan pemahaman alur lengkap Naive Bayes:
-**Prior → Likelihood (Laplace smoothing) → Skor → Posterior → Prediksi**.
+Sesuai ketentuan tugas, seluruh proses perhitungan Naive Bayes dilakukan **secara manual (step-by-step)** mengacu pada rumus matematika asli, **tanpa menggunakan modul `sklearn.naive_bayes`**. Notebook ini disusun untuk mendemonstrasikan pemahaman mendalam tentang alur probabilitas.
 
----
+### 🧠 Alur Logika Program
+```mermaid
+graph LR
+    A[Start: Data Latih] --> B(Hitung Prior Probability)
+    B --> C(Hitung Likelihood + Laplace Smoothing)
+    C --> D{Input Data Baru}
+    D --> E(Hitung Posterior Score)
+    E --> F[Keputusan: Hujan / Tidak]
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style F fill:#bbf,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
 
-## 1. Persyaratan Sistem
-
-Sebelum menjalankan notebook, pastikan perangkat telah memiliki:
-
-* **Python 3.8 atau lebih baru**
-* **Jupyter Notebook**, atau **Visual Studio Code** dengan ekstensi:
-
-  * Python
-  * Jupyter
-* Library Python:
-
-  * `pandas`
-  * `numpy`
-  * `openpyxl` (untuk membaca file Excel)
-
-Install library dengan:
-
-```bash
-pip install pandas numpy openpyxl
-```
-
----
-
-## 2. Struktur File Tugas
-
-```
-NB_Cuaca_NPM.ipynb
-dataset_hujan_besok_kategori.xlsx
-README_NaiveBayes.md
-```
-
-Pastikan file Excel berada di folder yang sama dengan notebook.
-
----
-
-## 3. Cara Membuka Notebook
-
-### A. Visual Studio Code
-
-1. Buka VS Code
-2. Pilih **File → Open Folder** dan arahkan ke folder tugas
-3. Klik file **NB_Cuaca_NPM.ipynb**
-4. Pilih kernel Python yang tersedia
-5. Jalankan cell satu per satu dengan:
-
-   * Tombol **▶ Run Cell**, atau
-   * Shortcut **Shift + Enter**
-
-### B. Jupyter Notebook
-
-1. Buka terminal pada folder tugas
-2. Jalankan:
-
-```bash
-jupyter notebook
-```
-
-3. Notebook akan muncul di browser
-4. Klik file dan jalankan cell mulai dari atas
-
----
-
-## 4. Urutan Menjalankan Notebook
-
-Notebook terdiri dari beberapa tahap utama:
-
-1. **Identitas & Deskripsi Tugas**
-2. **Import library**
-3. **Pembacaan dataset cuaca**
-4. **Perhitungan prior kelas (Yes/No)**
-5. **Perhitungan likelihood menggunakan Laplace smoothing**
-6. **Fungsi prediksi Naive Bayes**
-7. **Pengujian tiga contoh kasus prediksi**
-8. **Interpretasi hasil**
-
-Jika seluruh cell dapat dijalankan tanpa error, proses Naive Bayes berjalan dengan benar.
-
----
-
-## 5. Menguji Prediksi Secara Mandiri
-
-Dosen / penguji dapat menambahkan contoh kasus baru untuk menguji model.
-Struktur input adalah dictionary dengan nilai kategorial.
-
-```python
-contoh = {
-    "Temp": "panas",
-    "Humidity": "kering",
-    "Wind": "kencang",
-    "Cloud": "cerah",
-    "Pressure": "tinggi",
-    "RainToday": "No"
+    1. 💻 Persyaratan SistemSebelum menjalankan notebook, pastikan perangkat Anda telah siap tempur:KomponenSpesifikasiPythonVersi 3.8 atau lebih baru 🐍EditorJupyter Notebook atau VS Code (dgn ekstensi Jupyter)Librarypandas (Manipulasi data), numpy (Numerik), openpyxl (Baca Excel)Instalasi Library:Bashpip install pandas numpy openpyxl
+2. 📂 Struktur File TugasPastikan susunan file dalam folder Anda terlihat seperti ini agar script dapat membaca dataset dengan benar:Plaintext📦 TUGAS_NAIVE_BAYES
+ ┣ 📜 NB_Cuaca_NPM.ipynb                # 🧠 Main Notebook (Otak Program)
+ ┣ 📊 dataset_hujan_besok_kategori.xlsx # 💾 Dataset Sumber
+ ┗ 📝 README_NaiveBayes.md              # 📘 Dokumen Panduan Ini
+3. 🚀 Cara Membuka NotebookPilih salah satu metode yang paling nyaman bagi Anda:<img src="https://www.google.com/search?q=https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="20"> Opsi A: Visual Studio Code (Recommended)Buka aplikasi VS Code.Pilih menu File → Open Folder dan arahkan ke folder tugas.Klik file NB_Cuaca_NPM.ipynb.Pastikan Kernel Python sudah terpilih di pojok kanan atas.Jalankan cell satu per satu dengan tombol ▶ Run atau shortcut Shift + Enter.<img src="https://www.google.com/search?q=https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" width="20"> Opsi B: Jupyter NotebookBuka terminal/CMD pada folder tugas.Ketik perintah:Bashjupyter notebook
+Browser akan terbuka otomatis. Klik file notebook dan jalankan cell dari atas ke bawah.4. 📋 Urutan EksekusiAgar tidak terjadi error variabel, jalankan notebook secara berurutan:Identitas & Deskripsi - Header tugas.Import Library - Memuat pandas & numpy.Load Dataset - Membaca file Excel ke DataFrame.Prior Calculation - Menghitung probabilitas kelas P(Yes) dan P(No).Likelihood (Laplace) - Menghitung probabilitas bersyarat dengan smoothing.Fungsi Prediksi - Fungsi utama Naive Bayes.Testing - Pengujian 3 kasus sampel.Interpretasi - Kesimpulan hasil.✅ Indikator Sukses: Jika seluruh cell dapat dijalankan (Run All) tanpa pesan Error, maka logika matematika telah berjalan sempurna.5. 🧪 Uji Coba Prediksi MandiriDosen atau penguji dapat menguji ketangguhan model dengan memasukkan parameter cuaca baru. Gunakan format dictionary berikut pada cell baru di notebook:Python# 🌤️ Skenario: Cuaca Panas tapi Berangin
+kasus_uji = {
+    "Temp": "panas",      # Opsi: panas, sedang, dingin
+    "Humidity": "kering", # Opsi: kering, normal, basah
+    "Wind": "kencang",    # Opsi: kencang, lemah
+    "Cloud": "cerah",     # Opsi: cerah, berawan, mendung
+    "Pressure": "tinggi", # Opsi: tinggi, normal, rendah
+    "RainToday": "No"     # Opsi: Yes, No
 }
 
-predict_naive_bayes(contoh)
-```
-
-Model akan menampilkan:
-
-* Prediksi `Yes` atau `No`
-* Probabilitas **P(Yes)** dan **P(No)** berdasarkan perhitungan posterior
-
----
-
-## 6. Catatan Penting
-
-* Semua perhitungan prior, likelihood, skor, dan posterior dihitung **manual**, bukan dari library *sklearn*.
-* Likelihood menggunakan **Laplace smoothing** untuk mencegah probabilitas 0.
-* Dataset sudah divalidasi dan seluruh fitur bersifat kategorial sesuai instruksi tugas.
-
----
-
-## 📎 **Repository GitHub**
-
-Seluruh kode tersedia di repositori berikut:
-
-🔗 [https://github.com/skimatt/Naive_Bayes](https://github.com/skimatt/Naive_Bayes)
-
----
-
-## 🙏 Penutup
-
-Terima kasih atas perhatian dan waktunya.
-Semoga dokumen dan notebook ini membantu memahami implementasi Naive Bayes secara konseptual maupun praktis.
-
-Jika diperlukan, saya siap melakukan revisi tambahan sesuai arahan.
+# 🔮 Panggil Fungsi Prediksi
+predict_naive_bayes(kasus_uji)
+Output Visual yang Diharapkan:Plaintext==========================================
+🔍 HASIL PREDIKSI NAIVE BAYES
+==========================================
+Probabilitas Hujan (Yes) : 0.0045
+Probabilitas Tidak (No)  : 0.0210
+------------------------------------------
+🎯 KEPUTUSAN FINAL: TIDAK HUJAN (No) ☀️
+==========================================
+6. ⚠️ Catatan Penting<div align="left"><table><tr><td width="60px" align="center"><img src="https://www.google.com/search?q=https://cdn-icons-png.flaticon.com/512/1067/1067357.png" width="40"><strong>Manual</strong></td><td>Semua perhitungan (Prior, Likelihood, Skor, Posterior) dihitung secara <strong>manual</strong> menggunakan rumus matematika probabilitas, bukan menggunakan library instan "black box" seperti Scikit-Learn.</td></tr><tr><td align="center"><img src="https://www.google.com/search?q=https://cdn-icons-png.flaticon.com/512/564/564619.png" width="40"><strong>Laplace</strong></td><td><strong>Laplace Smoothing</strong> diterapkan pada perhitungan Likelihood. Ini sangat penting untuk mencegah probabilitas bernilai 0 jika ada data uji yang fiturnya tidak pernah muncul di data latih.</td></tr></table></div>📎 Repository GitHubSeluruh kode sumber dan pembaruan tersedia di repositori berikut:<a href="https://github.com/skimatt/Naive_Bayes"><img src="https://www.google.com/search?q=https://img.shields.io/badge/GITHUB-Repository-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub" alt="Github Link"></a><div align="center"><p>Terima kasih telah meninjau tugas ini.Semoga dokumen ini membantu memahami implementasi Naive Bayes secara konseptual maupun praktis.</p><img src="https://www.google.com/search?q=https://cdn-icons-png.flaticon.com/512/1163/1163661.png" width="60" alt="Sun Cloud 3D"><sub>Dibuat dengan ❤️ dan ☕ untuk Tugas Kuliah</sub></div>
