@@ -1,7 +1,4 @@
-<div align="center">
-  <img src="https://cdn.dribbble.com/users/2234409/screenshots/11336360/media/32e790453b99992ba82033463533a272.png?resize=800x600&vertical=center" alt="Weather Prediction 3D Banner" width="100%" style="border-radius: 15px; object-fit: cover; height: 280px;">
 
-  <br><br>
 
   <h1>📘 Implementasi Naive Bayes Kategorial<br>
   <span style="font-weight: 300; font-size: 20px;">Studi Kasus: Prediksi Cuaca Besok</span></h1>
